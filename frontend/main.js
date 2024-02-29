@@ -20,11 +20,33 @@ createApp({
     },
 
     sendData() {
-      const newTask = this.inputText;
-      this.inputText = "";
+      if (this.inputText != "") {
+        const newTask = this.inputText;
+        this.inputText = "";
 
+        const dataToSend = {
+          text: newTask,
+        };
+
+        const params = {
+          headers: { "Content-Type": "multipart/form-data" },
+        };
+
+        axios
+          .post(
+            "http://localhost/php-todo-list-json/backend/api/setToDoList.php",
+            dataToSend,
+            params
+          )
+          .then((response) => {
+            this.toDoList = response.data;
+          });
+      }
+    },
+
+    toggleStatus(index) {
       const dataToSend = {
-        text: newTask,
+        index,
       };
 
       const params = {
@@ -33,7 +55,7 @@ createApp({
 
       axios
         .post(
-          "http://localhost/php-todo-list-json/backend/api/setToDoList.php",
+          "http://localhost/php-todo-list-json/backend/api/toggleStatus.php",
           dataToSend,
           params
         )
