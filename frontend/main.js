@@ -63,6 +63,25 @@ createApp({
           this.toDoList = response.data;
         });
     },
+
+    deleteItem(index) {
+      const dataToSend = {
+        index,
+      };
+
+      const params = {
+        headers: { "Content-Type": "multipart/form-data" },
+      };
+      axios
+        .post(
+          "http://localhost/php-todo-list-json/backend/api/deleteItem.php",
+          dataToSend,
+          params
+        )
+        .then((response) => {
+          this.toDoList = response.data;
+        });
+    },
   },
 
   mounted() {

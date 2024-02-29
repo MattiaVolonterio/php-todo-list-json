@@ -88,7 +88,10 @@
                   :class="item.isDone ? 'isDone' : ''"
                   >{{item.text}}</span
                 >
-                <i class="fa-regular fa-circle-xmark"></i>
+                <i
+                  @click="deleteItem(index)"
+                  class="fa-regular fa-circle-xmark"
+                ></i>
               </li>
             </ul>
           </div>
