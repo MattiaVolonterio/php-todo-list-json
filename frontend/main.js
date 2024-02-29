@@ -9,9 +9,17 @@ createApp({
     };
   },
 
-  computed: {},
+  methods: {
+    fetchToDoList() {
+      axios
+        .get("http://localhost/php-todo-list-json/backend/api/getToDoList.php")
+        .then((result) => {
+          this.toDoList = result.data;
+        });
+    },
+  },
 
-  methods: {},
-
-  mounted() {},
+  mounted() {
+    this.fetchToDoList();
+  },
 }).mount("#app");
