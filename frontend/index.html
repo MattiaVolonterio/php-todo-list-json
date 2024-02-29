@@ -48,7 +48,32 @@
       <div class="container mt-5">
         <h1 class="text-center fw-bold">{{pageTitle}}</h1>
 
+        <!-- INPUT -->
         <div class="d-flex justify-content-center mt-5">
+          <div class="card">
+            <div class="card-body">
+              <div class="input-group">
+                <input
+                  v-model="inputText"
+                  @keyup.enter="sendData()"
+                  type="text"
+                  class="form-control"
+                  placeholder="Inserisci un nuovo ToDo"
+                />
+                <button
+                  @click="sendData()"
+                  class="btn btn-outline-secondary"
+                  type="button"
+                >
+                  Aggiungi
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TO DO LIST -->
+        <div class="d-flex justify-content-center mt-3">
           <div class="card">
             <div class="card-header">To Do</div>
             <ul class="list-group list-group-flush">
