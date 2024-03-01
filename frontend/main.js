@@ -5,6 +5,7 @@ createApp({
     return {
       pageTitle: "PHP ToDo List JSON",
       inputText: "",
+      filterText: "",
 
       toDoList: [],
     };
@@ -68,6 +69,22 @@ createApp({
       };
       axios
         .post("../backend/api/deleteItem.php", dataToSend, params)
+        .then((response) => {
+          this.toDoList = response.data;
+        });
+    },
+
+    filterData() {
+      const filter = this.filterText;
+
+      const dataToSend = { filter };
+
+      const params = {
+        headers: { "Content-Type": "multipart/form-data" },
+      };
+
+      axios
+        .post("../backend/api/filterToDoList.php", dataToSend, params)
         .then((response) => {
           this.toDoList = response.data;
         });

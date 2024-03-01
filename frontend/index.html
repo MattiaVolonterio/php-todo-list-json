@@ -68,6 +68,15 @@
                   Aggiungi
                 </button>
               </div>
+
+              <!-- FILTER -->
+              <input
+                v-model="filterText"
+                @input="filterData()"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Filtra risultati"
+              />
             </div>
           </div>
         </div>
