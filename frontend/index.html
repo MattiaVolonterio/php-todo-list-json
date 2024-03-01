@@ -84,7 +84,7 @@
                 style="cursor: pointer"
               >
                 <span
-                  @click="toggleStatus(index)"
+                  @click="toggleStatus(item,index)"
                   :class="item.isDone ? 'isDone' : ''"
                   >{{item.text}}</span
                 >

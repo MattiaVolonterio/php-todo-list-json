@@ -2,15 +2,18 @@
 
 $index_received = (int) $_POST['index'];
 
+$new_object = [
+    'isDone' => $_POST['isDone'] === 'true' ? true : false,
+    'text' => $_POST['text'],
+];
+
+
 
 $toDoList_json = file_get_contents("../data/toDoList.json");
 $toDoList_array = json_decode($toDoList_json, true);
 
 
-$selected_element = $toDoList_array[$index_received];
-
-
-$toDoList_array[$index_received]['isDone'] = !$selected_element['isDone'];
+$toDoList_array[$index_received] = $new_object;
 
 $json_result = json_encode($toDoList_array);
 

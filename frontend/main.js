@@ -38,8 +38,12 @@ createApp({
       }
     },
 
-    toggleStatus(index) {
+    toggleStatus(item, index) {
+      const newItemStatus = !item.isDone;
+
       const dataToSend = {
+        text: item.text,
+        isDone: newItemStatus,
         index,
       };
 
