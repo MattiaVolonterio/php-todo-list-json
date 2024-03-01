@@ -12,11 +12,9 @@ createApp({
 
   methods: {
     fetchToDoList() {
-      axios
-        .get("http://localhost/php-todo-list-json/backend/api/getToDoList.php")
-        .then((result) => {
-          this.toDoList = result.data;
-        });
+      axios.get("../backend/api/getToDoList.php").then((result) => {
+        this.toDoList = result.data;
+      });
     },
 
     sendData() {
@@ -33,11 +31,7 @@ createApp({
         };
 
         axios
-          .post(
-            "http://localhost/php-todo-list-json/backend/api/setToDoList.php",
-            dataToSend,
-            params
-          )
+          .post("../backend/api/setToDoList.php", dataToSend, params)
           .then((response) => {
             this.toDoList = response.data;
           });
@@ -54,11 +48,7 @@ createApp({
       };
 
       axios
-        .post(
-          "http://localhost/php-todo-list-json/backend/api/toggleStatus.php",
-          dataToSend,
-          params
-        )
+        .post("../backend/api/toggleStatus.php", dataToSend, params)
         .then((response) => {
           this.toDoList = response.data;
         });
@@ -73,11 +63,7 @@ createApp({
         headers: { "Content-Type": "multipart/form-data" },
       };
       axios
-        .post(
-          "http://localhost/php-todo-list-json/backend/api/deleteItem.php",
-          dataToSend,
-          params
-        )
+        .post("../backend/api/deleteItem.php", dataToSend, params)
         .then((response) => {
           this.toDoList = response.data;
         });
